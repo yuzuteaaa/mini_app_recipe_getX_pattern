@@ -28,9 +28,20 @@ class RegisterView extends GetView<AuthController> {
                   : const Text('Register')),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: () {
-              Get.offAllNamed('/login');
-            }, child: Text("Pergi ke Login"))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Sudah punya akun? "),
+                InkWell(
+                    onTap: () {
+                      Get.offAllNamed('/login');
+                    },
+                    child: Text(
+                      "Loginxxx",
+                      style: TextStyle(color: Colors.blue),
+                    ))
+              ],
+            )
           ],
         ),
       ),

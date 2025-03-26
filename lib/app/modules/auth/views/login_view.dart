@@ -25,20 +25,31 @@ class LoginView extends GetView<AuthController> {
             ),
             const SizedBox(height: 20),
             Obx(() => ElevatedButton(
-              onPressed: controller.isLoading.value
-                  ? null
-                  : () => controller.login(
-                emailController.text,
-                passwordController.text,
-              ),
-              child: controller.isLoading.value
-                  ? const CircularProgressIndicator()
-                  : const Text('Login'),
-            )),
+                  onPressed: controller.isLoading.value
+                      ? null
+                      : () => controller.login(
+                            emailController.text,
+                            passwordController.text,
+                          ),
+                  child: controller.isLoading.value
+                      ? const CircularProgressIndicator()
+                      : const Text('Login'),
+                )),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: () {
-              Get.offAllNamed('/auth');
-            }, child: Text("Pergi ke Register"))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Belum mendaftar ? "),
+                InkWell(
+                    onTap: () {
+                      Get.offAllNamed('/auth');
+                    },
+                    child: Text(
+                      "Daftar",
+                      style: TextStyle(color: Colors.blue),
+                    ))
+              ],
+            )
           ],
         ),
       ),
